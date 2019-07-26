@@ -1,21 +1,17 @@
 // Modules to control application life and create native browser window
-const { app, dialog, Menu, BrowserWindow } = require('electron')
+const { app, Menu, BrowserWindow } = require('electron')
 const path = require('path')
+const message = require('./src/util')
 
 let mainWindow
-
-global.dialogBox = (title, e) => dialog.showMessageBox({
-	title: title,
-	type: 'info',
-	message: e
-})
 
 function createWindow() {
 	mainWindow = new BrowserWindow({
 		width: 1200,
 		height: 700,
 		webPreferences: {
-			preload: path.join(__dirname, 'preload.js')
+			preload: path.join(__dirname, 'preload.js'),
+			nodeIntegration: true
 		}
 	})
 	mainWindow.loadFile('index.html')
@@ -84,7 +80,7 @@ const menu = Menu.buildFromTemplate([{
 	label: "About",
 	submenu: [{
 		role: 'about',
-		click: () => global.dialogBox('about', 'lyrieek')
+		click: () => message.dialogBox('about', 'lyrieek')
 	}]
 }])
 Menu.setApplicationMenu(menu)

@@ -5,6 +5,7 @@ const moment = require('moment');
 const _ = require('lodash');
 const remote = require('electron').remote;
 const buildEditorContextMenu = remote.require('electron-editor-context-menu');
+const message = require('./src/util')
 
 $(function() {
 
@@ -21,7 +22,7 @@ $(function() {
 		readyFileItems.forEach(function(filename, index) {
 			fs.stat(path.join(filePath, filename), function(eror, stats) {
 				if (eror) {
-					return global.dialogBox('error', 'cannot get stat')
+					return message.dialogBox('error', 'cannot get stat')
 				}
 				let fileType = "File";
 				let fileIcon = "file-o";
