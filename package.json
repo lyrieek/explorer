@@ -11,7 +11,7 @@
   ],
   "author": "lyrieek",
   "devDependencies": {
-    "electron": "^5.0.6"
+    "electron": "^18.3.7"
   },
   "dependencies": {
     "electron-editor-context-menu": "^1.1.1",
